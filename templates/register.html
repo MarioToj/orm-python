@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+
+    <form action="/new" method="post">
+        <div>
+            <label for="fullname">Nombre completo</label>
+            <input type="text" name="fullname" placeholder="Ingrese su nombre">
+            {% for category, message in errors %}
+                {% if category == 'fullname' %}
+                    <span class="error" style="color: red;">{{ message }}</span>  <!-- Muestra el error de fullname -->
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" placeholder="Ingrese su email">
+            {% for category, message in errors %}
+                {% if category == 'email' %}
+                    <span class="error" style="color: red;">{{ message }}</span>  <!-- Muestra el error de fullname -->
+                {% endif %}
+            {% endfor %}
+    
+        </div>
+        <div>
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" placeholder="Ingrese su teléfono">
+            {% for category, message in errors %}
+                {% if category == 'phone' %}
+                    <span class="error" style="color: red;">{{ message }}</span>  <!-- Muestra el error de fullname -->
+                {% endif %}
+            {% endfor %}
+        </div>
+        <button type="submit">Guardar</button>
+        
+    </form>
+
+</body>
+</html>

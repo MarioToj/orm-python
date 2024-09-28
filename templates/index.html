@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body>
+    
+     <!-- tabla -->
+     <table class="table table-bordered">
+        <thead>
+            <th scope="col">#</th>
+            <th scope="col">user</th>
+            <th scope="col">correo</th>
+            <th scope="col">password</th>
+            <th scope="col">editar</th>
+            <th scope="col">delete</th>
+        </thead>
+        <tbody>
+            {% for c in contac %}
+            <tr>
+                <td>{{c.id}}</td>
+                <td>{{c.fullname}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.phone}}</td>
+                <td><button class="btn btn-primary btn-sm" id="">edit</button></td>
+                <td><a href="#" class="btn btn-danger btn-sm">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <a href="/new">Crear Contacto</a>
+    </table>
+    
+</body>
+</html>
