@@ -4,34 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-</head>
-<body>
-    
-     <!-- tabla -->
-     <table class="table table-bordered">
-        <thead>
-            <th scope="col">#</th>
-            <th scope="col">user</th>
-            <th scope="col">correo</th>
-            <th scope="col">password</th>
-            <th scope="col">editar</th>
-            <th scope="col">delete</th>
-        </thead>
-        <tbody>
-            {% for c in contac %}
-            <tr>
-                <td>{{c.id}}</td>
-                <td>{{c.fullname}}</td>
-                <td>{{c.email}}</td>
-                <td>{{c.phone}}</td>
-                <td><button class="btn btn-primary btn-sm" id="">edit</button></td>
-                <td><a href="#" class="btn btn-danger btn-sm">delete</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
 
-        <a href="/new">Crear Contacto</a>
-    </table>
-    
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-6">
+
+        <a href="/new" class="text-blue-500 hover:underline mr-4 mb-3 hover:ease-in duration-300">Agregar Nuevo contacto</a>
+        <div class="overflow-x-auto flex justify-center items-center">
+            <table class="min-w-full text-left text-sm">
+
+                <thead class="bg-gray-800">
+                    <tr>
+                        <th class="px-6 py-3 font-bold text-gray-300">ID</th>
+                        <th class="px-6 py-3 font-bold text-gray-300">Nombre</th>
+                        <th class="px-6 py-3 font-bold text-gray-300">Email</th>
+                        <th class="px-6 py-3 font-bold text-gray-300">Phone</th>
+                        <th class="px-6 py-3 font-bold text-gray-300">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-700 divide-y divide-gray-600">
+
+                    {% if contact %}
+                    {% for c in contact %}
+                    <tr>
+                        <td class="px-6 py-4">{{c.id}}</td>
+                        <td class="px-6 py-4">{{c.fullname}}</td>
+                        <td class="px-6 py-4">{{c.email}}</td>
+                        <td class="px-6 py-4">{{c.phone}}</td>
+                        <td class="px-6 py-4">
+                            <a href="{{ url_for('contacts.update_contact', id=c.id) }}" class="text-blue-500 hover:underline mr-4">Update</a>
+                            <a href="{{ url_for('contacts.delete_contact', id=c.id) }}" class="text-red-500 hover:underline mr-4">Delete</a>
+                            <a href="{{ url_for('contacts.about_contact', id=c.id) }}" class="text-green-500 hover:underline mr-4">About</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
+
